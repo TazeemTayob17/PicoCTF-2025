@@ -1,17 +1,19 @@
-# Generate the markdown content again and save it to a file so user can download
-
-md_content = """# picoCTF 2025 - SSTI1 (Web Exploitation)
 
 ## 📌 Project Description
 
 This challenge is part of the **Web Exploitation** category in picoCTF 2025.  
 We are given a small web app that lets users post announcements. The description hints at **templating** being used, which suggests potential **Server-Side Template Injection (SSTI)** vulnerabilities.
 
-![Challenge Description](<./Screenshot%20(57).png>)
+![Challenge Description]
+
+<img width="671" height="591" alt="Screenshot (57)" src="https://github.com/user-attachments/assets/21e47857-ba62-41f1-8059-e553d3b472e5" />
+
 
 When we open the website, we see a simple input box that allows us to type and display announcements:
 
-![Challenge Website](<./Screenshot%20(58).png>)
+![Challenge Website]
+
+<img width="1366" height="662" alt="Screenshot (58)" src="https://github.com/user-attachments/assets/e58d41ae-8022-41fd-93a6-621a8bc62b37" />
 
 ---
 
@@ -36,10 +38,6 @@ In short: SSTI lets us **execute code on the server through template injection**
 We start by entering a simple math expression inside the input box:
 {{7*7}}
 
-csharp
-Always show details
-
-Copy code
 If the site is vulnerable, it will evaluate this and show `49`.  
 This confirms **SSTI exists**.
 
@@ -48,10 +46,6 @@ This confirms **SSTI exists**.
 We can now try to access Python objects. For example:
 {{ ''.class.mro[1].subclasses() }}
 
-vbnet
-Always show details
-
-Copy code
 This lets us explore available classes in the Python environment. From there, we can look for ways to execute system commands.
 
 ### 3. Executing System Commands
@@ -59,10 +53,6 @@ This lets us explore available classes in the Python environment. From there, we
 A well-known trick in Jinja2 SSTI is to use Python’s `__import__` function to load modules. For example:
 {{ request.application.globals.builtins.import('os').popen('ls').read() }}
 
-markdown
-Always show details
-
-Copy code
 
 - `__import__('os')` imports the OS module.
 - `.popen('ls').read()` lists files on the server.
@@ -73,11 +63,6 @@ This gives us access to the file system and we can search for the **flag file**.
 
 Once we see a suspicious file (e.g., `flag.txt`), we can read it:
 {{ request.application.globals.builtins.import('os').popen('cat flag.txt').read() }}
-
-yaml
-Always show details
-
-Copy code
 
 This reveals the hidden **picoCTF flag** 🎉.
 
@@ -92,11 +77,6 @@ This challenge teaches us:
 
 **Flag:**  
 picoCTF{s4rv3r_s1d3_t3mp14t3_1nj3ct10n5_4r3_c001_09365533}
-
-less
-Always show details
-
-Copy code
 
 ---
 
