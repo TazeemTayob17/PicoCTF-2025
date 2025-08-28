@@ -4,14 +4,14 @@
 This challenge is part of the **Web Exploitation** category in picoCTF 2025.  
 We are given a small web app that lets users post announcements. The description hints at **templating** being used, which suggests potential **Server-Side Template Injection (SSTI)** vulnerabilities.
 
-![Challenge Description]
+# Challenge Description
 
 <img width="671" height="591" alt="Screenshot (57)" src="https://github.com/user-attachments/assets/21e47857-ba62-41f1-8059-e553d3b472e5" />
 
 
 When we open the website, we see a simple input box that allows us to type and display announcements:
 
-![Challenge Website]
+# Challenge Website
 
 <img width="1366" height="662" alt="Screenshot (58)" src="https://github.com/user-attachments/assets/e58d41ae-8022-41fd-93a6-621a8bc62b37" />
 
@@ -22,7 +22,7 @@ When we open the website, we see a simple input box that allows us to type and d
 Server-Side Template Injection occurs when user input is embedded directly into a server-side template engine (like **Jinja2** in Python, or Twig in PHP) **without proper sanitization**.
 
 - Normally, `{{ variable }}` is used safely to display values inside a template.
-- If user input is inserted into the template itself, attackers can inject malicious expressions (e.g., `{{ 7*7 }}`) that are **evaluated by the template engine**.
+- If user input is inserted into the template itself, attackers can inject malicious expressions (e.g., `{{ 10*10 }}`) that are **evaluated by the template engine**.
 - This can lead to:
   - Arbitrary data access
   - Remote code execution (e.g., reading files, running OS commands)
@@ -36,9 +36,9 @@ In short: SSTI lets us **execute code on the server through template injection**
 ### 1. Testing for Injection
 
 We start by entering a simple math expression inside the input box:
-{{7*7}}
+{{10*10}}
 
-If the site is vulnerable, it will evaluate this and show `49`.  
+If the site is vulnerable, it will evaluate this and show `100`.  
 This confirms **SSTI exists**.
 
 ### 2. Exploring the Environment
@@ -73,7 +73,7 @@ This reveals the hidden **picoCTF flag** 🎉.
 This challenge teaches us:
 
 - How dangerous SSTI vulnerabilities can be.
-- How to move from a simple test (`{{7*7}}`) to full remote code execution by chaining Python internals.
+- How to move from a simple test (`{{10*10}}`) to full remote code execution by chaining Python internals.
 
 **Flag:**  
 picoCTF{s4rv3r_s1d3_t3mp14t3_1nj3ct10n5_4r3_c001_09365533}
