@@ -11,7 +11,7 @@
 > _Can you get the real meaning from this file?_  
 > Download the file and decode it.
 
-![alt text](<Screenshot (81).png>)
+Alt text
 
 ---
 
