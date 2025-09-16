@@ -11,7 +11,7 @@
 > _Can you get the real meaning from this file?_  
 > Download the file and decode it.
 
-Alt text
+<img width="670" height="482" alt="Screenshot (81)" src="https://github.com/user-attachments/assets/01189113-2010-49a2-83ae-93266534a1ef" />
 
 ---
 
@@ -21,7 +21,7 @@ Alt text
 
 Opening the file included with the challenge reveals a single Base64 string:
 
-![File contents — original string](<./Screenshot%20(82).png>)
+<img width="674" height="216" alt="Screenshot (82)" src="https://github.com/user-attachments/assets/5ed94882-b183-4d63-9729-d8ece3558f91" />
 
 ```
 YidkM0JxZGtwQlRYdHFhR3g2YUhsZmF6TnFlVGwzWVR0clgya3lNRFJvYjVTJvMmZRPT0nCg==
@@ -33,7 +33,8 @@ YidkM0JxZGtwQlRYdHFhR3g2YUhsZmF6TnFlVGwzWVR0clgya3lNRFJvYjVTJvMmZRPT0nCg==
 
 I pasted the string into a Base64 decoder (https://www.base64decode.org/) and decoded it — the result contained Python-like `b'...` bytes syntax:
 
-![First base64 decode output](<./Screenshot%20(83).png>)
+<img width="794" height="503" alt="Screenshot (83)" src="https://github.com/user-attachments/assets/460893bc-6085-4d6d-a740-8d7a23a2a0f3" />
+
 
 Decoded result (literal):
 
@@ -55,7 +56,8 @@ d3BqdkpBTXtqaGx6aHlfazNqeTI3YTNrX2kyMDRoa2o2fQ==
 
 Decode this second time from Base64 to get a readable string:
 
-![Second base64 decode output](<./Screenshot%20(84).png>)
+<img width="791" height="542" alt="Screenshot (84)" src="https://github.com/user-attachments/assets/d8dac684-be44-4086-8c3b-3643a690a81c" />
+
 
 Result:
 
@@ -71,7 +73,8 @@ This looks extremely close to a picoCTF flag format (`picoCTF{...}`) but the pre
 
 I ran the string through a Caesar cipher brute-force (https://www.dcode.fr/caesar-cipher) and inspected the outputs. One of the shifts produced the proper flag format:
 
-![Caesar brute force (dcode) output showing the correct flag](<./Screenshot%20(85).png>)
+<img width="788" height="601" alt="Screenshot (85)" src="https://github.com/user-attachments/assets/5e83f464-8a56-4920-8ba3-6a1f06d74ac2" />
+
 
 Decrypted (correct) flag:
 
