@@ -1,4 +1,5 @@
 #Below is the program given to us by the Binary Search picoCTF challenge.
+#Connect to the server using cmd command and password provided in description
 #We need to guess the number that the code generates randomly within 10 attempts
 #We use binary search:
 #Attempt 1: 500 (program says higher)
